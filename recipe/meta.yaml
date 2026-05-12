@@ -1,7 +1,7 @@
 {% set version = "3.2.2" %}
 
 package:
-  name: sdl2_mixer
+  name: sdl3_mixer
   version: {{ version }}
 
 source:
@@ -11,7 +11,7 @@ source:
 build:
   number: 0
   run_exports:
-    - {{ pin_subpackage("sdl2_mixer", max_pin='x') }}
+    - {{ pin_subpackage("sdl3_mixer", max_pin='x') }}
 
 requirements:
   build:
@@ -34,17 +34,17 @@ requirements:
 test:
   commands:
     # shared libraries
-    - test -f $PREFIX/lib/libSDL2_mixer.so                # [linux]
-    - test -f $PREFIX/lib/libSDL2_mixer.dylib             # [osx]
-    - if not exist %LIBRARY_LIB%\SDL2_mixer.lib exit 1    # [win]
-    - if not exist %LIBRARY_BIN%\SDL2_mixer.dll exit 1    # [win]
+    - test -f $PREFIX/lib/libSDL3_mixer.so                # [linux]
+    - test -f $PREFIX/lib/libSDL3_mixer.dylib             # [osx]
+    - if not exist %LIBRARY_LIB%\SDL3_mixer.lib exit 1    # [win]
+    - if not exist %LIBRARY_BIN%\SDL3_mixer.dll exit 1    # [win]
 
     # absence of static libraries
-    - test ! -f $PREFIX/lib/libSDL2_mixer.a               # [unix]
+    - test ! -f $PREFIX/lib/libSDL3_mixer.a               # [unix]
 
     # headers
-    - test -f $PREFIX/include/SDL2/SDL_mixer.h            # [unix]
-    - if not exist %LIBRARY_INC%\SDL2\SDL_mixer.h exit 1  # [win]
+    - test -f $PREFIX/include/SDL3/SDL_mixer.h            # [unix]
+    - if not exist %LIBRARY_INC%\SDL3\SDL_mixer.h exit 1  # [win]
 
 about:
   home: https://www.libsdl.org/projects/SDL_mixer/
